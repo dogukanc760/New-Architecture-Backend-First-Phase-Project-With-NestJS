@@ -11,6 +11,7 @@ import {
   GenreSchema,
 } from './model';
 import { MongoDataServices } from './mongo-data-services.service';
+import environment from 'src/environment/environment';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { MongoDataServices } from './mongo-data-services.service';
       { name: Book.name, schema: BookSchema },
       { name: Genre.name, schema: GenreSchema },
     ]),
-    MongooseModule.forRoot(DATA_BASE_CONFIGURATION.mongoConnectionString),
+    MongooseModule.forRoot(environment.mongoUrl),
   ],
   providers: [
     {
